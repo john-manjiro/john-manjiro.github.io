@@ -49,17 +49,21 @@ hr {
 
 /* ... (previous CSS code remains the same) ... */
 
+/* ... (previous CSS code remains the same) ... */
+
 .keyboard-row {
   width: 100%;
   max-width: 320px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .key-tile,
 .enter-key-tile {
+  flex-grow: 1;
+  margin: 1px;
   border: 1px solid lightgray;
   height: 40px;
 
@@ -72,20 +76,44 @@ hr {
 }
 
 .enter-key-tile {
-  grid-column-end: span 2;
+  flex-grow: 2;
 }
 
 /* Media query for smaller screens (phones) */
 @media screen and (max-width: 480px) {
   /* ... (previous CSS code remains the same) ... */
 
-  .keyboard-row {
-    grid-template-columns: repeat(auto-fit, minmax(26px, 1fr));
-  }
-
   .key-tile,
   .enter-key-tile {
     height: 34px;
     font-size: 16px;
+  }
+
+  .enter-key-tile {
+    flex-grow: 2;
+  }
+}
+``
+/* ... (previous CSS code remains the same) ... */
+
+/* Media query for larger screens (monitors) */
+@media screen and (min-width: 481px) {
+  .keyboard-row {
+    max-width: 360px;
+    gap: 2px;
+  }
+
+  .key-tile {
+    flex-grow: 1;
+    min-width: 36px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .enter-key-tile {
+    flex-grow: 2;
+    min-width: 76px;
+    height: 40px;
+    font-size: 20px;
   }
 }
